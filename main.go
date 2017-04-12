@@ -69,7 +69,7 @@ func main() {
 		panic(err)
 	}
 
-	err = InitI18n([]string{"en-US", "zh-CN"})
+	err = InitI18n([]string{"en-US"})
 	if err != nil {
 		panic(err)
 	}

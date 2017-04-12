@@ -50,6 +50,10 @@ func (c *Addb) Post() {
 	engine.DataSource = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8",
 		username, passwd, host, port, dbname)
 
+	if engine.Driver == "sqlite3" {
+		engine.DataSource = dbname
+	}
+
 	/*if err := c.MapForm(&engine); err != nil {
 		c.Flash.Set("ErrAdd", i18n.Tr(c.CurLang(), "err_param"))
 		c.Redirect("/addb")

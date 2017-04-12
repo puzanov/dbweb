@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"fmt"
 	"sync"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -26,6 +27,10 @@ func GetOrm(engine *models.Engine) *xorm.Engine {
 	o := getOrm(engine.Name)
 	if o == nil {
 		var err error
+
+		fmt.Print("Driver", engine.Driver)
+		fmt.Print("DataSource", engine.DataSource)
+
 		o, err = xorm.NewEngine(engine.Driver, engine.DataSource)
 		if err != nil {
 			return nil
